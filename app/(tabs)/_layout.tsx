@@ -1,12 +1,10 @@
 import Colors from '@/constants/Colors';
-import { useAuth } from '@/context/authContext';
 import { Tabs } from 'expo-router';
 import React from 'react';
-import {WalletIcon, HomeIcon, BriefcaseIcon, UsersIcon} from 'react-native-heroicons/outline';
+import {HomeIcon} from 'react-native-heroicons/outline';
 
 
 export default function TabLayout() {
-  const {authUser} = useAuth()
 
   return (
     <Tabs
@@ -38,27 +36,6 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => (
             <HomeIcon size={24} color={color} />
           ),
-        }}
-      />
-      <Tabs.Screen
-        name="requests"
-        options={{
-          title: 'Requests',
-          tabBarLabel: 'درخواست ها',
-          tabBarIcon: ({ color }) => (
-            <WalletIcon size={24} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="customer"
-        options={{
-          title: 'Cusotmer',
-          tabBarLabel: 'مشتریان',
-          tabBarIcon: ({ color }) => (
-            <UsersIcon size={24} color={color} />
-          ),
-          href: (authUser?.user?.role === 'customer' ? null : '/(tabs)/customer')
         }}
       />
     </Tabs>
