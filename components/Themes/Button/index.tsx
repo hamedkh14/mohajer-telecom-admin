@@ -4,7 +4,7 @@ import { Rounded, Sizes, Spacing } from "@/constants/Styles";
 import Colors from "@/constants/Colors";
 import { ReactNode } from "react";
 import ThemedText from '../ThemedText';
-import { LinkProps, usePathname, useRouter } from 'expo-router';
+import { LinkProps, useRouter } from 'expo-router';
 
 interface ButtonProps {
   children?: ReactNode;

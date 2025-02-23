@@ -1,6 +1,6 @@
 import { StyleProp, StyleSheet, View } from 'react-native';
 import Colors from '@/constants/Colors';
-import { Rounded, Sizes, Spacing } from '../../../constants/Styles';
+import { Sizes, Spacing } from '../../../constants/Styles';
 import { ArrowRightIcon } from 'react-native-heroicons/outline';
 import React from 'react';
 import Button from './../Button';
