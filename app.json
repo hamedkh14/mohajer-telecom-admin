@@ -8,6 +8,7 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "owner": "hamedkh14",
     "ios": {
       "bundleIdentifier": "ir.hamedkhodadadi.mohajertelecomadmin",
       "buildNumber": "1.0.0",
