@@ -64,7 +64,7 @@ export default function RootLayout() {
         <AuthContext.Provider value={{ authUser, handleAuthUser }}>
           <Stack>
             <Stack.Screen name="index" options={{ headerShown: false }} />
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            {/* <Stack.Screen name="(tabs)" options={{ headerShown: false }} /> */}
             {/* <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="account" options={{ headerShown: false }} />
             <Stack.Screen name="services" options={{ headerShown: false }} />
