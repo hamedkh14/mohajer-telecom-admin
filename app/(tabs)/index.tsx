@@ -1,3 +1,4 @@
+import AccountButton from '@/components/AccountButton';
 import BaseTheme from '@/components/Themes/BaseTheme';
 import ThemedText from '@/components/Themes/ThemedText';
 import Colors from '@/constants/Colors';
@@ -47,7 +48,7 @@ export default function HomeScreen() {
       headerOptions={{
         customTitle: <CustomTitle name={authUser?.user?.name} />,
         hideBackBox: true,
-        // headerAction: <AccountButton />
+        headerAction: <AccountButton />
       }}
     >
       <FlatList 
