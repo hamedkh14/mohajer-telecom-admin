@@ -1,38 +1,26 @@
-import Colors from '@/constants/Colors';
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { HomeIcon } from 'react-native-heroicons/outline';
+import { Platform } from 'react-native';
 
 export default function TabLayout() {
 
   return (
     <Tabs
-      screenOptions={{
+    screenOptions={{
+        tabBarActiveTintColor: 'red',
         headerShown: false,
-        tabBarStyle: {
-          backgroundColor: Colors.elementBackground,
-          borderTopWidth: 0,
-          height: 64,
-          elevation: 0
-        },
-        tabBarActiveTintColor: Colors.white,
-        tabBarInactiveTintColor: Colors.whiteAlpha,
-        tabBarIconStyle: {
-          marginTop: 5
-        },
-        tabBarLabelStyle: {
-          fontSize: 12,
-          fontWeight: "bold",
-        }
+        tabBarStyle: Platform.select({
+          ios: {
+            // Use a transparent background on iOS to show the blur effect
+            position: 'absolute',
+          },
+          default: {},
+        }),
       }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarLabel: 'خانه',
-          tabBarIcon: ({ color }) => (
-            <HomeIcon size={24} color={color} />
-          ),
+          title: 'Home'
         }}
       />
       <Tabs.Screen
