@@ -4,7 +4,7 @@ import Colors from '@/constants/Colors';
 import { Rounded, Spacing } from '@/constants/Styles';
 import { useAuth } from '@/context/authContext';
 import { Link } from 'expo-router';
-import { StyleSheet, View, Text, Image, FlatList, Dimensions } from 'react-native';
+import { StyleSheet, View, Image, FlatList, Dimensions } from 'react-native';
 
 
 const CustomTitle = ({name}: {name: string}) => {
@@ -32,13 +32,13 @@ export default function HomeScreen() {
   const screenWidth = Dimensions.get('window').width;
   const itemSize = screenWidth / 3 - 13;
 
-  const data: any = [
-    // {title: 'بسته الماس', image: require('../../assets/images/imo.png'), href: '/services/almas'},
-    // {title: 'بسته اینترنت', image: require('../../assets/images/wifi.png'), href: '/services/internet'},
-    // {title: 'شارژ سیم کارت', image: require('../../assets/images/sim.png'), href: '/services/recharge'},
-    // {title: 'اشتراک', image: require('../../assets/images/subscription.png'), href: '/subscription'},
-    // {title: 'یوسی پابچی', image: require('../../assets/images/pubg.png'), href: '/services/uc-pubg'},
-    // {title: 'برقرار', image: require('../../assets/images/bargarar.png'), href: '/services/bargarar'},
+  const data = [
+    {title: 'بسته الماس', image: require('../../assets/images/imo.png'), href: '/services/almas'},
+    {title: 'بسته اینترنت', image: require('../../assets/images/wifi.png'), href: '/services/internet'},
+    {title: 'شارژ سیم کارت', image: require('../../assets/images/sim.png'), href: '/services/recharge'},
+    {title: 'اشتراک', image: require('../../assets/images/subscription.png'), href: '/subscription'},
+    {title: 'یوسی پابچی', image: require('../../assets/images/pubg.png'), href: '/services/uc-pubg'},
+    {title: 'برقرار', image: require('../../assets/images/bargarar.png'), href: '/services/bargarar'},
   ]
   
   return (
