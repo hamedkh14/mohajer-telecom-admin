@@ -42,7 +42,7 @@ const Customer = () => {
   const [userItemMenu, setUserItemMenu] = useState<any>(null)
 
   const flatListData: any = users || [];
-  
+
   const onEndReached = useCallback(() => {
     if (hasNextPage && !isFetchingNextPage) {
       fetchNextPage()
