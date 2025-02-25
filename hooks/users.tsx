@@ -16,7 +16,7 @@ export const useGetOneUser = (userId: string = '') => {
       return response.data
     },
     onError: (error) => {
-      console.error('Error fetching data:', error); 
+      // console.error('Error fetching data:', error); 
     },
     cacheTime: 0
   })
@@ -36,7 +36,7 @@ export const useGetUsers = (query: string = '') => {
       return result.items
     }, []),
     onError: (error) => {
-      console.error('Error fetching data:', error); 
+      // console.error('Error fetching data:', error); 
     },
     cacheTime: 0
   })
@@ -57,7 +57,7 @@ export const useCreateUser = () => {
       client.invalidateQueries({queryKey:[key]})
     },
     onError: (error) => {
-      console.log('Error fetching data:', error); 
+      // console.log('Error fetching data:', error); 
     },
   })
   
@@ -84,7 +84,7 @@ export const useUpdateUser = () => {
       client.invalidateQueries({queryKey:[key]})
     },
     onError: (error) => {
-      console.log('Error fetching data:', error); 
+      // console.log('Error fetching data:', error); 
     },
   })
   

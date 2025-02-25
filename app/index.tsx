@@ -33,7 +33,7 @@ const LoginPage = () => {
   // بررسی اینکه آیا کاربر قبلا وارد حساب کاربری شده است. 
   const handleCheckLogged = async () => {
     if(authUser.isAuthenticated && authUser.user && authUser.user.role === 'admin') {
-      console.info('User is Valid');
+      // console.info('User is Valid');
       setIsCheckingLogged(false)
       router.replace('/(tabs)')
       return;
@@ -49,7 +49,7 @@ const LoginPage = () => {
           isAuthenticated: true,
           user: result?.data?.record
         });
-        console.info('Token is Valid');
+        // console.info('Token is Valid');
         router.replace('/(tabs)');
         setIsCheckingLogged(false)
         return;

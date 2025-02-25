@@ -20,7 +20,7 @@ export const useGetUserWalletBalance = (id:string = '') => {
       }
     },
     onError: (error) => {
-      console.error('Error fetching data:', error); 
+      // console.error('Error fetching data:', error); 
     },
     cacheTime: 0
   })
@@ -78,7 +78,7 @@ export const useTopUpWallet = () => {
       client.invalidateQueries({queryKey:['Users']})
     },
     onError: (error) => {
-      console.log('Error fetching data:', error); 
+      // console.log('Error fetching data:', error); 
     },
   })
   

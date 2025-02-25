@@ -22,7 +22,6 @@ const initValues = async () => {
 }
 const request = {
     get:async (endpoint: string, options = {}) => {
-        console.log(endpoint);
         await initValues();
         return api.get(endpoint, options);
     },

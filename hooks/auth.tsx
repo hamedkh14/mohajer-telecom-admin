@@ -23,7 +23,7 @@ export const useVerifyUser = (userName: string, password: string) => {
       setIsLoading(false);
       setIsError(true);
       setError([err.status, err.message]);
-      console.log('Error fetching data:', err);
+      // console.log('Error fetching data:', err);
     } finally {
       setIsLoading(false);
     }
