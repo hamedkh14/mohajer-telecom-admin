@@ -65,12 +65,11 @@ export default function RootLayout() {
           <Stack>
             <Stack.Screen name="index" options={{ headerShown: false }} />
             {/* <Stack.Screen name="(tabs)" options={{ headerShown: false }} /> */}
-            {/* <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="account" options={{ headerShown: false }} />
             <Stack.Screen name="services" options={{ headerShown: false }} />
             <Stack.Screen name="report" options={{ headerShown: false }} />
             <Stack.Screen name="customer" options={{ headerShown: false }} />
-            <Stack.Screen name="subscription" options={{ headerShown: false }} /> */}
+            <Stack.Screen name="subscription" options={{ headerShown: false }} />
             {/* <Stack.Screen name="(tabs)" options={{ headerShown: false }} /> */}
             <Stack.Screen name="+not-found" />
           </Stack>

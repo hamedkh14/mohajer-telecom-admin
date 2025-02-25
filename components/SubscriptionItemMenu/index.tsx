@@ -1,13 +1,10 @@
 import Button from '@/components/Themes/Button'
-import ThemedText from '@/components/Themes/ThemedText'
 import Colors from '@/constants/Colors'
-import { Rounded, Sizes, Spacing } from '@/constants/Styles'
-import numberFormat from '@/utils/numberFormat'
-import toPersion from '@/utils/toPersion'
+import { Rounded, Spacing } from '@/constants/Styles'
 import { useRouter } from 'expo-router'
 import React, { useEffect } from 'react'
-import { BackHandler, Image, Modal, StyleSheet, View } from 'react-native'
-import { CreditCardIcon, PencilSquareIcon, ShieldExclamationIcon, TrashIcon } from 'react-native-heroicons/outline'
+import { BackHandler, Modal, StyleSheet, View } from 'react-native'
+import { PencilSquareIcon, TrashIcon } from 'react-native-heroicons/outline'
 
 interface modalProp {
   open: boolean, 
@@ -16,7 +13,7 @@ interface modalProp {
   confirmDelete: any
 }
 
-const ServiceItemMenu = ({open, onClose, item, confirmDelete}: modalProp) => {
+const SubscriptionItemMenu = ({open, onClose, item, confirmDelete}: modalProp) => {
   const router = useRouter()
   useEffect(() => {
     const handleBackPress = () => {
@@ -49,7 +46,7 @@ const ServiceItemMenu = ({open, onClose, item, confirmDelete}: modalProp) => {
               style={styles.button} 
               onPress={() => {
                 onClose()
-                router.push({pathname: '/services/[...serviceForm]' as any, params: {serviceForm: [item.id]}})
+                router.push({pathname: '/subscription/[subForm]' as any, params: {subForm: item.id}})
               }} 
             />
             <Button 
@@ -94,4 +91,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default ServiceItemMenu
+export default SubscriptionItemMenu
