@@ -108,10 +108,10 @@ const Customer = () => {
           Icon={PlusIcon}
           iconOptions={{color: Colors.white}}
           style={{backgroundColor: Colors.whiteAlpha2}}
-          // onPress={() => {router.push({
-          //   pathname: '/customer/[...userForm]',
-          //   params: {userForm: ['null']}
-          // })}}
+          onPress={() => {router.push({
+            pathname: '/customer/[...userForm]',
+            params: {userForm: ['null']}
+          })}}
         />
       }}
     >
