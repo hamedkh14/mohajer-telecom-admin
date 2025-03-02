@@ -3,7 +3,7 @@ import Colors from '@/constants/Colors'
 import { Rounded, Spacing } from '@/constants/Styles'
 import { useRouter } from 'expo-router'
 import React, { useEffect } from 'react'
-import { BackHandler, Image, Modal, StyleSheet, View } from 'react-native'
+import { BackHandler, Modal, StyleSheet, View } from 'react-native'
 import { CreditCardIcon, CurrencyDollarIcon, PencilSquareIcon, ShieldExclamationIcon, TrashIcon } from 'react-native-heroicons/outline'
 
 interface modalProp {
@@ -57,10 +57,10 @@ const UserItemMenu = ({open, onClose, item, confirmDelete, confirmChangeStatusUs
               Icon={PencilSquareIcon} 
               iconOptions={{position: 'end', color: Colors.white}} 
               style={styles.button} 
-              // onPress={() => {
-              //   onClose()
-              //   router.push({pathname: '/customer/[...userForm]', params: {userForm: [item.id]}})
-              // }} 
+              onPress={() => {
+                onClose()
+                router.push({pathname: '/customer/[...userForm]', params: {userForm: [item.id]}})
+              }} 
             />
             <Button 
               varient='transparent' 
@@ -81,7 +81,7 @@ const UserItemMenu = ({open, onClose, item, confirmDelete, confirmChangeStatusUs
               style={styles.button} 
               onPress={() => {
                 onClose()
-                // router.push({pathname: '/customer/report/[userId]', params: {userId: item.id}})
+                router.push({pathname: '/customer/report/[userId]', params: {userId: item.id}})
               }}
             />
             <Button 
@@ -104,7 +104,6 @@ const UserItemMenu = ({open, onClose, item, confirmDelete, confirmChangeStatusUs
 const styles = StyleSheet.create({
   modalBackground: {
     flex: 1,
-    // backgroundColor: Colors.blackAlpha3,
     justifyContent: 'flex-end'
   },
   container: {
