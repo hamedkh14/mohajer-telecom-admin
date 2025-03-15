@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Mohajer Telecom Admin",
+    "name": "مهاجر تلکام ادمین",
     "slug": "mohajer-telecom-admin",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -38,12 +38,15 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-localization"
     ],
     "experiments": {
       "typedRoutes": true
     },
     "extra": {
+      "supportsRTL": true,
+      "forcesRTL": true,
       "router": {
         "origin": false
       },

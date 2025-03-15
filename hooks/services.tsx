@@ -17,6 +17,7 @@ export const useGetServices = (query:string = '') => {
       return response.data
     },
     select: (result) => {
+      // console.log(result);
       return result.items
     },
     onError: (error) => {

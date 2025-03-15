@@ -11,6 +11,8 @@ import Fonts from '@/constants/Fonts';
 import Toast from 'react-native-toast-message';
 import { AuthContext } from '@/context/authContext';
 import { ActivityIndicator } from 'react-native-paper';
+import { I18nManager, Platform } from 'react-native';
+// import * as Updates from 'expo-updates';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -33,6 +35,13 @@ export default function RootLayout() {
       }
     }
   });
+
+  const shouldBeRTL = true;
+  if (shouldBeRTL !== I18nManager.isRTL && Platform.OS !== 'web') {
+    I18nManager.allowRTL(shouldBeRTL);
+    I18nManager.forceRTL(shouldBeRTL);
+    // Updates.reloadAsync();
+  }
 
   useEffect(() => {
     if (loaded) {
@@ -70,6 +79,7 @@ export default function RootLayout() {
             <Stack.Screen name="report" options={{ headerShown: false }} />
             <Stack.Screen name="customer" options={{ headerShown: false }} />
             <Stack.Screen name="subscription" options={{ headerShown: false }} />
+            <Stack.Screen name="priceAdjustment" options={{ headerShown: false }} />
             <Stack.Screen name="+not-found" />
           </Stack>
         </AuthContext.Provider>

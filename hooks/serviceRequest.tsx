@@ -146,7 +146,7 @@ export const useApproveServiceRequest = () => {
       if(user.role === 'customer') {
         const sellerProfit = Number(price) - Number(info.adminPrice);
         await request.patch(`/collections/users/records/${user.parentId}`, {
-          wallet_available_balance: Number(user.expand.parentId.wallet_available_balance) + Number(sellerProfit)
+          wallet_available_balance: Number(user.expand?.parentId.wallet_available_balance) + Number(sellerProfit)
         });
 
         await request.post('/collections/transactions/records', {

@@ -4,7 +4,8 @@ import Divider from '../Divider'
 import { Rounded, Spacing } from '@/constants/Styles'
 import Colors from '@/constants/Colors'
 import Button from '../Themes/Button'
-import { MagnifyingGlassIcon } from 'react-native-heroicons/outline'
+import { CurrencyDollarIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline'
+import { useRouter } from 'expo-router'
 
 const SearchForm = ({
     searchValue, 
@@ -18,6 +19,7 @@ const SearchForm = ({
     searchLoading: boolean
   }
 ) => {
+  const router = useRouter();
   return (<>
     <View style={styles.container}>
       <View style={styles.inputContainer}>
@@ -37,9 +39,9 @@ const SearchForm = ({
           disabled={searchLoading}
         />
       </View>
-      {/* <Button 
+      <Button 
         varient='iconButton' 
-        Icon={FunnelIcon} 
+        Icon={CurrencyDollarIcon} 
         iconOptions={{color: Colors.white}}
         style={{
           borderColor: Colors.whiteAlpha2,
@@ -48,7 +50,10 @@ const SearchForm = ({
           width: 56,
           height: 56
         }}
-      /> */}
+        onPress={() => { 
+          router.push('/priceAdjustment')
+        }}
+      />
     </View>
     <Divider style={{paddingHorizontal: Spacing[2] }} />
   </>)

@@ -16,7 +16,7 @@ export const useVerifyUser = (userName: string, password: string) => {
     setError('');
     setData(null);
     try {
-      const authResponse = await request.post('/collections/users/auth-with-password', {identity: `${userName}`, password: password});
+      const authResponse = await request.post('/collections/users/auth-with-password', {identity: `${userName}@mohajertelecom.ir`, password: password});
       setData(authResponse.data);
       setIsLoading(false);
     } catch (err: any) {

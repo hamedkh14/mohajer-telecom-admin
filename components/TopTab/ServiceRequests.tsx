@@ -128,11 +128,11 @@ const ServiceRequests = () => {
             <ServiceRequestItem
               id={item?.id}
               title={item?.title || "نامشخص"}
-              price={item?.price}
+              price={item?.service_id ? item?.price : item?.information?.afghaniMoney}
               service_type={item?.type}
               user={item?.expand?.user_id?.name}
               date={item?.created}
-              isToman
+              isToman={item?.service_id && true}
               onPress={() => setServiceRequestReportModal({...item})}
             />
           )}

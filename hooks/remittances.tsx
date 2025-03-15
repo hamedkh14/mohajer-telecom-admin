@@ -120,7 +120,7 @@ export const useApproveRemittance = () => {
       if(user.role === 'customer' && city !== 'ایران') {
         const sellerProfit = (Number(info?.remittance_price) * Number(price)) - (Number(info?.adminPrice) * Number(price));
         await request.patch(`/collections/users/records/${user.parentId}`, {
-          wallet_available_balance: Number(user.expand.parentId.wallet_available_balance) + Number(sellerProfit)
+          wallet_available_balance: Number(user.expand?.parentId.wallet_available_balance) + Number(sellerProfit)
         });
 
         await request.post('/collections/transactions/records', {

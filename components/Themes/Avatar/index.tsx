@@ -2,12 +2,12 @@ import Colors from '@/constants/Colors'
 import { Sizes } from '@/constants/Styles'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import { UserIcon } from 'react-native-heroicons/outline'
+import { BuildingStorefrontIcon, UserIcon } from 'react-native-heroicons/outline'
 
-const Avatar = () => {
+const Avatar = ({type='customer'} : {type?: string}) => {
   return (
     <View style={styles.container}>
-      <UserIcon color={Colors.white} size={Sizes.lg} />
+      {type === 'customer' ? <UserIcon color={Colors.white} size={Sizes.lg} /> : <BuildingStorefrontIcon color={Colors.textWarning} size={Sizes.lg} />}
     </View>
   )
 }

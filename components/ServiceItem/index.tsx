@@ -17,17 +17,18 @@ const operator: any = {
   salaam: require('../../assets/images/salaam.png'),
   mtn: require('../../assets/images/mtn.png'),
   afghanWireless: require('../../assets/images/afghanWireless.png'),
+  'uc-pubg': require('../../assets/images/pubg-icon.png'),
+  bargarar: require('../../assets/images/bargarar-icon.png'),
+  almas: require('../../assets/images/imo-icon.png'),
 }
 
 const ServiceItem = ({item, price, openMenu}: {item: any, price?: number, openMenu: any}) => {
-  const handlePress = () => {
-  }
   return (
     <View 
       style={styles.itemContainer}
     >
       <View style={{flexDirection: 'row-reverse', gap: Spacing[1]}}>
-        <View style={styles.imageContainer}><Image source={operator[item?.operator]} style={styles.itemImage} /></View>
+        <View style={styles.imageContainer}><Image source={operator[item?.operator || item?.type]} style={styles.itemImage} /></View>
         <View style={{alignItems: 'flex-end', justifyContent: 'space-between'}}>
           <ThemedText type='text' style={{fontSize: Sizes.sm}}>{toPersion(item.title)} {item.isSpecial && '(ویژه)'}</ThemedText>
           <Price type='text' price={price || item.price} style={{color: Colors.caption}} />

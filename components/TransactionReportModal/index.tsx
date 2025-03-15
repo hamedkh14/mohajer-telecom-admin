@@ -8,6 +8,7 @@ import Price from '../Price'
 import { TransactionStatus } from '../TransactionStatus'
 import request from '@/Api/axios'
 import { transactionServiceList } from '@/utils/servicesList'
+import Toast from 'react-native-toast-message'
 
 interface modalProp {
   open: boolean, 
@@ -18,15 +19,15 @@ interface modalProp {
 const handleTitle = (data: any) => {
   let title = 'نامشخص';
 
-  if (!data || !data?.expand || (!data.expand.service_request_id && !data.expand.remittance_id && !data.expand.subscription_id)) {
+  if (!data || !data?.expand || (!data.expand?.service_request_id && !data.expand?.remittance_id && !data.expand?.subscription_id)) {
     title = transactionServiceList?.[data?.transaction_type]?.[data?.service_type] || 'نامشخص';
   } else {
     if (data.expand?.service_request_id?.title) {
-      title = data.expand.service_request_id.title;
+      title = data.expand?.service_request_id.title;
     } else if (data.expand?.remittance_id) {
       title = 'حواله';
     } else if (data.expand?.subscription_id?.title) {
-      title = data.expand.subscription_id.title;
+      title = data.expand?.subscription_id.title;
     } else {
       title = 'نامشخص';
     }
@@ -41,11 +42,11 @@ const Details = ({data, userInfo}: {data: any, userInfo: any}) => {
       <>
         <View style={styles.item}>
           <ThemedText type='caption' style={{fontSize: 16}}>نام اکانت:</ThemedText>
-          <ThemedText type='text'>{data?.expand.service_request_id.information.accountName}</ThemedText>
+          <ThemedText type='text'>{data?.expand?.service_request_id.information.accountName}</ThemedText>
         </View>
         <View style={styles.item}>
           <ThemedText type='caption' style={{fontSize: 16}}>آیدی اکانت:</ThemedText>
-          <ThemedText type='text'>{data?.expand.service_request_id.information.accountId}</ThemedText>
+          <ThemedText type='text'>{data?.expand?.service_request_id.information.accountId}</ThemedText>
         </View>
       </>
     )
@@ -65,11 +66,11 @@ const Details = ({data, userInfo}: {data: any, userInfo: any}) => {
       <>
         <View style={styles.item}>
           <ThemedText type='caption' style={{fontSize: 16}}>گیرنده:</ThemedText>
-          <ThemedText type='text'>{data?.expand.remittance_id.recipient_name}</ThemedText>
+          <ThemedText type='text'>{data?.expand?.remittance_id.recipient_name}</ThemedText>
         </View>
         <View style={styles.item}>
           <ThemedText type='caption' style={{fontSize: 16}}>شهر گیرنده:</ThemedText>
-          <ThemedText type='text'>{data?.expand.remittance_id.recipient_city}</ThemedText>
+          <ThemedText type='text'>{data?.expand?.remittance_id.recipient_city}</ThemedText>
         </View>
         {
           data?.recipient_city === 'ایران' &&
@@ -129,7 +130,8 @@ const TransactionReportModal = ({data, open, onClose}: modalProp) => {
           setUserInfo(res.data)
         }
       } catch (err: any) {
-        console.log(err.message);
+        // console.log(err.message);
+        Toast.show({ type: 'error', text1: 'خطا در عملیات!' });
       }
     }
   }
@@ -192,6 +194,14 @@ const TransactionReportModal = ({data, open, onClose}: modalProp) => {
                 <ThemedText type='caption' style={{textAlign: 'right', color: Colors.text}}>{data?.description?.desc}</ThemedText>
               </View>
             )}
+            
+            {
+              data?.status === 'failed' && 
+              <View style={{alignItems: 'flex-end', gap: Spacing[2]}}>
+                <ThemedText type='caption' style={{fontSize: 16}}>دلیل رد درخواست:</ThemedText>
+                <ThemedText type='text' style={{textAlign: 'right'}}>{data?.description?.rejected_description}</ThemedText>
+              </View>
+            }
           </ScrollView> 
         </View>
       </View>

@@ -190,7 +190,6 @@ const ServiceForm = () => {
   if(isEdit && isLoading) {
     return <LoadingPage />
   }
-
   return (
     <BaseTheme
       hasHeader
