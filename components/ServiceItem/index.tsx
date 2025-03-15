@@ -27,7 +27,7 @@ const ServiceItem = ({item, price, openMenu}: {item: any, price?: number, openMe
     <View 
       style={styles.itemContainer}
     >
-      <View style={{flexDirection: 'row-reverse', gap: Spacing[1]}}>
+      <View style={{flexDirection: 'row', gap: Spacing[1]}}>
         <View style={styles.imageContainer}><Image source={operator[item?.operator || item?.type]} style={styles.itemImage} /></View>
         <View style={{alignItems: 'flex-end', justifyContent: 'space-between'}}>
           <ThemedText type='text' style={{fontSize: Sizes.sm}}>{toPersion(item.title)} {item.isSpecial && '(ویژه)'}</ThemedText>
@@ -42,7 +42,7 @@ const ServiceItem = ({item, price, openMenu}: {item: any, price?: number, openMe
 const styles = StyleSheet.create({
   itemContainer: {
     width: '100%',
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: Colors.elementBackground,

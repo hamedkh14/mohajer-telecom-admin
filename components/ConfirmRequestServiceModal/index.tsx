@@ -57,7 +57,7 @@ const ConfirmRequestServiceModal = ({
               <Input placeholder='دلیل رد درخواست' value={rejectedDesc} onChangeText={(text) => handleRejectedDesc(text)} />
             )}
           </View>
-          <View style={{flexDirection: 'row-reverse', gap: Spacing[2], justifyContent: 'center'}}>
+          <View style={{flexDirection: 'row', gap: Spacing[2], justifyContent: 'center'}}>
             <Button text='خیر' cancel onPress={onClose} />
             <Button text='تایید' style={styles.btnConfirm} onPress={onSubmit} loading={submitLoading} disabled={submitLoading} cancel={submitLoading} />
           </View>

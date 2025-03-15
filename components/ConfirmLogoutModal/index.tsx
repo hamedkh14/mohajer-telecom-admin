@@ -54,7 +54,7 @@ const ConfirmLogoutModal = ({open, onClose}: modalProp) => {
             <ThemedText type='text'>آیا برای خروج از حساب کاربری خود مطمئن هستید؟</ThemedText>
             
           </View>
-          <View style={{flexDirection: 'row-reverse', gap: Spacing[2], justifyContent: 'center'}}>
+          <View style={{flexDirection: 'row', gap: Spacing[2], justifyContent: 'center'}}>
             <Button text='خیر' cancel onPress={onClose} />
             <Button text='بله و خارج شوم' style={styles.btnConfirm} onPress={onLogout} />
           </View>

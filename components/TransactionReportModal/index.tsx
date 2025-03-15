@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
     gap: Spacing[3]
   },
   item: {
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
     marginBottom: Spacing[2]

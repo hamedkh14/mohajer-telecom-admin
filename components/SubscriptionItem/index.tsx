@@ -29,7 +29,7 @@ const SubscriptionItem = ({item, onSelecting}: {item: any, onSelecting: any}) =>
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     backgroundColor: Colors.elementBackground,
     paddingVertical: Spacing[1],
     paddingRight: Spacing[1],
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   rightBox: {
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     gap: Spacing[2],
     height: '100%'
   },

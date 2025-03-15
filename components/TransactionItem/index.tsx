@@ -37,7 +37,7 @@ const TransactionItem = ({
         <View style={styles.transactionItemTopContainer}>
           <View style={styles.transactionItemIcon}><ArrowsUpDownIcon size={Sizes.lg} color={Colors.subTitle} /></View>
           <View style={styles.transactionItemTopContainerDetails}>
-            <View style={{flexDirection: 'row-reverse', justifyContent: 'space-between'}}>
+            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               {
                 service_type === 'walletRecharge' ? 
                   <ThemedText type='text' style={{fontSize: Sizes.sm}}>شارژ کیف پول</ThemedText> 
@@ -46,7 +46,7 @@ const TransactionItem = ({
 
               <Price type={(position === 'transaction' && transaction_type) || 'text'} price={price} />
             </View>
-            <View style={{flexDirection: 'row-reverse', justifyContent: 'space-between'}}>
+            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <ThemedText type='caption'>{convertDate(date)}</ThemedText>
 
               <TransactionStatus status={status} />
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   },
   transactionItemTopContainer: {
     width: '100%',
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
   },
   transactionItemTopContainerDetails: {
     flex: 1,

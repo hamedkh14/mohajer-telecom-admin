@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     paddingRight: Spacing[2]
   },
   headerTop: {
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     height: 72,

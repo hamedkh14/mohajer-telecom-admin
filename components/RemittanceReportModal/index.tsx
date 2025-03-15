@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     gap: Spacing[1]
   },
   item: {
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
     marginBottom: Spacing[2]

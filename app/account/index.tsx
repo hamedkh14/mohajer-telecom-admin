@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   profileItem: {
     width: '100%',
     height: 64,
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: Colors.elementBackground,
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     marginBottom: Spacing[2]
   },
   textProfileItem: {
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     alignItems: 'center',
     gap: Spacing[2],
     height: '100%'

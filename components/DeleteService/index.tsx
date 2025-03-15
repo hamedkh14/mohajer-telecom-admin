@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   },
   mobileOperatorContainer: {
     width: '100%',
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     gap: Spacing[1],

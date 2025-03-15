@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 56,
     paddingHorizontal: Spacing[2],
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     gap: Spacing[1],
     paddingTop: Spacing[1]
   },
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.whiteAlpha2,
     borderRadius: Rounded.md,
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     alignItems: 'center',
     height: 56,
     flex: 1,
