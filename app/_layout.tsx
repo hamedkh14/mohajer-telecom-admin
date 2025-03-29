@@ -50,6 +50,7 @@ export default function RootLayout() {
   useEffect(() => {
     if(authUser.isAuthenticated || authUser.user) {
       registerForPushNotificationsAsync().then(token => {
+        Alert.alert('✅ توکن نوتیفیکیشن:', token);
         if(token) {
           request.patch(`/collections/users/records/${(authUser?.user?.id)}`, {pushToken: token});
           setPushToken(token)
