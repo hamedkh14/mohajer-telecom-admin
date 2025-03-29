@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "248551186093",
+    "project_id": "mohajer-telecom",
+    "storage_bucket": "mohajer-telecom.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248551186093:android:f2a846e1670a130b0f7024",
+        "android_client_info": {
+          "package_name": "ir.hamedkhodadadi.mohajertelecom"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOi6knKMgyCivPpv4JBGrbFjCycP0c3Ow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248551186093:android:77c16e3757c64d1d0f7024",
+        "android_client_info": {
+          "package_name": "ir.hamedkhodadadi.mohajertelecomadmin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOi6knKMgyCivPpv4JBGrbFjCycP0c3Ow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
