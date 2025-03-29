@@ -10,6 +10,7 @@ import ThemedText from '../Themes/ThemedText'
 import ConfirmRequestServiceModal from '../ConfirmRequestServiceModal'
 import { useApproveRemittance, useInfiniteRemittances, useRejectRemittance } from '@/hooks/remittances'
 import RemittanceReportModal from '../RemittanceReportModal'
+import { sendPushNotification } from '@/utils/pushNotification'
 
 const RemittanceRequests = () => {
   const [ remittanceReportModal, setRemittanceReportModal ] = useState<any>(null)
@@ -59,6 +60,11 @@ const RemittanceRequests = () => {
         city: remittanceReportModal?.recipient_city
       })
       .then(() => {
+        sendPushNotification({
+          pushTokens: [remittanceReportModal?.user_id?.pushToken], 
+          title: '🌟 حواله شما تایید شد!', 
+          body: `حواله شما به مبلغ ${remittanceReportModal?.price} ${remittanceReportModal?.recipient_city === 'ایران' ? 'تومان' : 'افعانی'} تایید شد!`
+        })
         Toast.show({
           type: 'success',
           text1: 'عملیات با موفقیت انجام شد!'
@@ -86,6 +92,11 @@ const RemittanceRequests = () => {
         rejectedDesc
       })
       .then(() => {
+        sendPushNotification({
+          pushTokens: [remittanceReportModal?.user_id?.pushToken], 
+          title: '💔 حواله شما رد شد!', 
+          body: `حواله شما به مبلغ ${remittanceReportModal?.price} ${remittanceReportModal?.recipient_city === 'ایران' ? 'تومان' : 'افعانی'} رد شد!`
+        })
         Toast.show({
           type: 'success',
           text1: 'عملیات با موفقیت انجام شد!'

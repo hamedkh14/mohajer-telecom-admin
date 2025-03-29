@@ -10,6 +10,7 @@ import ServiceRequestItem from '../ServiceRequestItem'
 import ThemedText from '../Themes/ThemedText'
 import ServiceRequestReportModal from '../ServiceRequestReportModal'
 import ConfirmRequestServiceModal from '../ConfirmRequestServiceModal'
+import { sendPushNotification } from '@/utils/pushNotification'
 
 const ServiceRequests = () => {
   const [ serviceRequestReportModal, setServiceRequestReportModal ] = useState<any>(null)
@@ -58,6 +59,11 @@ const ServiceRequests = () => {
         info: serviceRequestReportModal?.information
       })
       .then(() => {
+        sendPushNotification({
+          pushTokens: [serviceRequestReportModal?.expand?.user_id?.pushToken], 
+          title: '🌟 درخواست شما تایید شد', 
+          body: `درخواست ${serviceRequestReportModal?.title} شما تایید و انجام شد!`
+        })
         Toast.show({
           type: 'success',
           text1: 'عملیات با موفقیت انجام شد!'
@@ -86,6 +92,11 @@ const ServiceRequests = () => {
         rejectedDesc
       })
       .then(() => {
+        sendPushNotification({
+          pushTokens: [serviceRequestReportModal?.expand?.user_id?.pushToken], 
+          title: '💔 درخواست شما رد شد', 
+          body: `درخواست ${serviceRequestReportModal?.title} شما رد شد!`
+        })
         Toast.show({
           type: 'success',
           text1: 'عملیات با موفقیت انجام شد!'
