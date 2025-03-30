@@ -1,8 +1,7 @@
 import * as Notifications from 'expo-notifications';
 import * as Device from 'expo-device';
+import Constants from "expo-constants";
 import { Alert, Platform } from 'react-native';
-import Toast from 'react-native-toast-message';
-import request from '@/Api/axios';
 
 const endpoint = '/collections/users/records'
 
@@ -23,8 +22,24 @@ export async function registerForPushNotificationsAsync() {
       return;
     }
 
-    token = (await Notifications.getExpoPushTokenAsync()).data;
-    // Alert.alert('✅ توکن نوتیفیکیشن:', token);
+    const projectId =
+      Constants?.expoConfig?.extra?.eas?.projectId ??
+      Constants?.easConfig?.projectId;
+    if (!projectId) {
+      Alert.alert('⛔ خطا', 'Project ID not found!');
+      return
+    }
+
+    try {
+      token =  (
+        await Notifications.getExpoPushTokenAsync({
+          projectId,
+        })
+      ).data;
+      Alert.alert('✅ توکن نوتیفیکیشن:', token);
+    } catch (error) {
+      Alert.alert('⛔ خطا', 'خطا در دریافت توکن نوتیفیکیشن!');
+    }
   } else {
     Alert.alert('⚠️ این قابلیت فقط روی گوشی واقعی کار می‌کند.');
   }
