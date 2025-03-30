@@ -13,8 +13,9 @@ import { AuthContext } from '@/context/authContext';
 import { ActivityIndicator } from 'react-native-paper';
 import { I18nManager, Platform, Alert } from 'react-native';
 // import * as Updates from 'expo-updates';
-import {registerForPushNotificationsAsync} from '@/utils/pushNotification';
+import {registerForPushNotificationsAsync} from '@/utils/registerForPushNotificationsAsync';
 import request from '@/Api/axios';
+import NotificationHandler from '@/components/NotificationHandler';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -24,7 +25,6 @@ export default function RootLayout() {
     isAuthenticated: false,
     user: null
   });
-  const [pushToken, setPushToken] = useState<any>('')
   const [loaded] = useFonts(Fonts);
   
   const queryClient = new QueryClient({
@@ -47,17 +47,7 @@ export default function RootLayout() {
     // Updates.reloadAsync();
   }
 
-  useEffect(() => {
-    if(authUser.isAuthenticated || authUser.user) {
-      registerForPushNotificationsAsync().then(token => {
-        Alert.alert('✅ توکن نوتیفیکیشن:', token);
-        if(token) {
-          request.patch(`/collections/users/records/${(authUser?.user?.id)}`, {pushToken: token});
-          setPushToken(token)
-        }
-      });
-    }
-  }, [authUser]);
+  
 
   useEffect(() => {
     if (loaded) {
@@ -85,22 +75,24 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={DefaultTheme}>
-      <QueryClientProvider client={queryClient}>
-        <AuthContext.Provider value={{ authUser, handleAuthUser }}>
-          <Stack>
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="account" options={{ headerShown: false }} />
-            <Stack.Screen name="services" options={{ headerShown: false }} />
-            <Stack.Screen name="report" options={{ headerShown: false }} />
-            <Stack.Screen name="customer" options={{ headerShown: false }} />
-            <Stack.Screen name="subscription" options={{ headerShown: false }} />
-            <Stack.Screen name="priceAdjustment" options={{ headerShown: false }} />
-            <Stack.Screen name="+not-found" />
-          </Stack>
-        </AuthContext.Provider>
-        <Toast />
-      </QueryClientProvider>
-    </ThemeProvider>
+        <QueryClientProvider client={queryClient}>
+          <AuthContext.Provider value={{ authUser, handleAuthUser }}>
+            <NotificationHandler>
+              <Stack>
+                <Stack.Screen name="index" options={{ headerShown: false }} />
+                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                <Stack.Screen name="account" options={{ headerShown: false }} />
+                <Stack.Screen name="services" options={{ headerShown: false }} />
+                <Stack.Screen name="report" options={{ headerShown: false }} />
+                <Stack.Screen name="customer" options={{ headerShown: false }} />
+                <Stack.Screen name="subscription" options={{ headerShown: false }} />
+                <Stack.Screen name="priceAdjustment" options={{ headerShown: false }} />
+                <Stack.Screen name="+not-found" />
+              </Stack>
+            </NotificationHandler>
+          </AuthContext.Provider>
+          <Toast />
+        </QueryClientProvider>
+      </ThemeProvider>
   );
 }
