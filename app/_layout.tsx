@@ -13,9 +13,8 @@ import { AuthContext } from '@/context/authContext';
 import { ActivityIndicator } from 'react-native-paper';
 import { I18nManager, Platform, Alert } from 'react-native';
 // import * as Updates from 'expo-updates';
-import {registerForPushNotificationsAsync} from '@/utils/registerForPushNotificationsAsync';
-import request from '@/Api/axios';
 import NotificationHandler from '@/components/NotificationHandler';
+import toastConfig from '@/utils/toastConfig';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -91,7 +90,7 @@ export default function RootLayout() {
               </Stack>
             </NotificationHandler>
           </AuthContext.Provider>
-          <Toast />
+          <Toast config={toastConfig} />
         </QueryClientProvider>
       </ThemeProvider>
   );

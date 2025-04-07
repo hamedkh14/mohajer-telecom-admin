@@ -10,7 +10,7 @@ import ServiceRequestItem from '../ServiceRequestItem'
 import ThemedText from '../Themes/ThemedText'
 import ServiceRequestReportModal from '../ServiceRequestReportModal'
 import ConfirmRequestServiceModal from '../ConfirmRequestServiceModal'
-import { sendPushNotification } from '@/utils/registerForPushNotificationsAsync'
+import { sendPushNotification } from '@/utils/sendPushNotification'
 
 const ServiceRequests = () => {
   const [ serviceRequestReportModal, setServiceRequestReportModal ] = useState<any>(null)

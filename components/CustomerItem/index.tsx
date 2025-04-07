@@ -17,14 +17,14 @@ const CustomerItem = ({ item, openMenu }: { item: any; openMenu: any }) => {
   return (
     <View style={[styles.container, item?.isDelete && styles.deleted]}>
       <View style={styles.topContainer}>
-        <View style={{ flexDirection: "row-reverse", gap: Spacing[1] }}>
+        <View style={{ flexDirection: "row", gap: Spacing[1] }}>
           <Avatar type={item?.role} />
           <View
             style={{ justifyContent: "space-between", alignItems: "flex-end" }}
           >
             <View
               style={{
-                flexDirection: "row-reverse",
+                flexDirection: "row",
                 alignItems: "center",
                 gap: 4,
               }}
@@ -73,15 +73,15 @@ const styles = StyleSheet.create({
   topContainer: {
     alignItems: "center",
     justifyContent: "space-between",
-    flexDirection: "row-reverse",
+    flexDirection: "row",
     padding: Spacing[1],
-    paddingLeft: 0,
+    paddingRight: 0,
   },
   bottomContainer: {
     height: 36,
     paddingHorizontal: Spacing[1],
     justifyContent: "space-between",
-    flexDirection: "row-reverse",
+    flexDirection: "row",
   },
 });
 

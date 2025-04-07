@@ -7,6 +7,7 @@ import { BackHandler, Modal, ScrollView, StyleSheet, View } from 'react-native'
 import convertDate from '@/utils/convertDate'
 import Price from '../Price'
 import Button from '../Themes/Button'
+import CopyButton from '../Themes/CopyButton'
 
 interface modalProp {
   open: boolean, 
@@ -59,17 +60,26 @@ const RemittanceReportModal = ({data, open, onClose, confirmOpen}: modalProp) =>
             </View>
             <View style={styles.item}>
               <ThemedText type='caption' style={{fontSize: 16}}>گیرنده:</ThemedText>
-              <ThemedText type='text'>{data?.recipient_name}</ThemedText>
+              <View style={{ flexDirection: "row", gap: Spacing[1], alignItems: "center" }}>
+                <CopyButton text={`${data?.recipient_name}`} size={Sizes.md} />
+                <ThemedText type='text'>{data?.recipient_name}</ThemedText>
+              </View>
             </View>
             <View style={styles.item}>
               <ThemedText type='caption' style={{fontSize: 16}}>شهر گیرنده:</ThemedText>
-              <ThemedText type='text'>{data?.recipient_city}</ThemedText>
+              <View style={{ flexDirection: "row", gap: Spacing[1], alignItems: "center" }}>
+                <CopyButton text={`${data?.recipient_city}`} size={Sizes.md} />
+                <ThemedText type='text'>{data?.recipient_city}</ThemedText>
+              </View>
             </View>
             {
               data?.recipient_city === 'ایران' &&
               <View style={styles.item}>
                 <ThemedText type='caption' style={{fontSize: 16}}>شماره کارت گیرنده:</ThemedText>
-                <ThemedText type='text'>{data?.recipient_cardnumber}</ThemedText>
+                <View style={{ flexDirection: "row", gap: Spacing[1], alignItems: "center" }}>
+                  <CopyButton text={`${data?.recipient_cardnumber}`} size={Sizes.md} />
+                  <ThemedText type='text'>{data?.recipient_cardnumber}</ThemedText>
+                </View>
               </View>
             }
           </ScrollView> 

@@ -205,13 +205,13 @@ const styles = StyleSheet.create({
     zIndex: 10
   },
   dropDwonPlaceholder: {
-    textAlign: 'right',
+    // textAlign: 'right',
     fontSize: Sizes.base,
     fontFamily: 'Yekan-Medium',
     color: 'gray'
   },
   dropDownText: {
-    textAlign: 'right',
+    // textAlign: 'right',
     fontSize: 16,
     color: '#333333',
     fontFamily: 'Yekan-Medium',

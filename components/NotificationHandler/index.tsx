@@ -26,7 +26,7 @@ const NotificationHandler = ({children} : {children: React.ReactNode}) => {
           try {
             request.patch(`/collections/users/records/${(authUser?.user?.id)}`, {pushToken: token});
             setPushToken(token)
-            Alert.alert('توکن با موفقیت ذخیره شد!');
+            // Alert.alert('توکن با موفقیت ذخیره شد!');
           } catch (error) {
             Alert.alert('خطا', 'خطا در ذخیره توکن!'); 
           }
@@ -39,7 +39,6 @@ const NotificationHandler = ({children} : {children: React.ReactNode}) => {
         console.log("Foreground Notification:", notification);
       });
 
-    // لیسنر برای کلیک روی نوتیفیکیشن
     responseListener.current =
       Notifications.addNotificationResponseReceivedListener((response) => {
         console.log("User clicked notification:", response);

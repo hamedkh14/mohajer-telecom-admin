@@ -67,7 +67,7 @@ const Input = ({
   }), [iconPosition]);
   
   return (
-    <View style={{width: '100%', gap: Spacing[1], alignItems: 'flex-end'}}>
+    <View style={{width: '100%', gap: Spacing[1]}}>
       {label && <ThemedText type='input'>{label}</ThemedText>}
       <TextInput 
         style={inputStyle} 

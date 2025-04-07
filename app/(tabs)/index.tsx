@@ -34,12 +34,12 @@ export default function HomeScreen() {
   const itemSize = screenWidth / 3 - 13;
 
   const data = [
-    {title: 'بسته الماس', image: require('../../assets/images/imo.png'), href: '/services/almas'},
-    {title: 'بسته اینترنت', image: require('../../assets/images/wifi.png'), href: '/services/internet'},
     {title: 'شارژ سیم کارت', image: require('../../assets/images/sim.png'), href: '/services/recharge'},
-    {title: 'اشتراک', image: require('../../assets/images/subscription.png'), href: '/subscription'},
-    {title: 'یوسی پابچی', image: require('../../assets/images/pubg.png'), href: '/services/uc-pubg'},
+    {title: 'بسته اینترنت', image: require('../../assets/images/wifi.png'), href: '/services/internet'},
+    {title: 'بسته الماس', image: require('../../assets/images/imo.png'), href: '/services/almas'},
     {title: 'برقرار', image: require('../../assets/images/bargarar.png'), href: '/services/bargarar'},
+    {title: 'یوسی پابچی', image: require('../../assets/images/pubg.png'), href: '/services/uc-pubg'},
+    {title: 'اشتراک', image: require('../../assets/images/subscription.png'), href: '/subscription'},
   ]
   
   return (
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     flex: 1,
     width: '100%',
-    alignItems: 'flex-end',
+    // alignItems: 'flex-end',
     justifyContent: 'center',
     gap: 4
   },

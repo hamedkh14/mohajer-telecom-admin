@@ -120,6 +120,7 @@ const Customer = () => {
         setSearchValue={setSearchValue}
         onSearch={onSearch}
         searchLoading={searchLoading}
+        priceAdjustment={false}
       />
       {flatListData.length > 0 ? (
         <FlatList

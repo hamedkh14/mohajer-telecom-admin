@@ -11,12 +11,14 @@ const SearchForm = ({
     searchValue, 
     setSearchValue, 
     onSearch,
-    searchLoading
+    searchLoading,
+    priceAdjustment = true
   } : {
     searchValue: string, 
     setSearchValue: any, 
     onSearch: any,
-    searchLoading: boolean
+    searchLoading: boolean,
+    priceAdjustment?: boolean
   }
 ) => {
   const router = useRouter();
@@ -39,7 +41,7 @@ const SearchForm = ({
           disabled={searchLoading}
         />
       </View>
-      <Button 
+      {priceAdjustment && <Button 
         varient='iconButton' 
         Icon={CurrencyDollarIcon} 
         iconOptions={{color: Colors.white}}
@@ -53,7 +55,8 @@ const SearchForm = ({
         onPress={() => { 
           router.push('/priceAdjustment')
         }}
-      />
+      />}
+      
     </View>
     <Divider style={{paddingHorizontal: Spacing[2] }} />
   </>)

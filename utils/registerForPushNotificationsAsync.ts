@@ -3,8 +3,6 @@ import * as Device from 'expo-device';
 import Constants from "expo-constants";
 import { Alert, Platform } from 'react-native';
 
-const endpoint = '/collections/users/records'
-
 export async function registerForPushNotificationsAsync() {
   let token;
 
@@ -36,7 +34,7 @@ export async function registerForPushNotificationsAsync() {
           projectId,
         })
       ).data;
-      Alert.alert('✅ توکن نوتیفیکیشن:', token);
+      // Alert.alert('✅ توکن نوتیفیکیشن:', token);
     } catch (error) {
       Alert.alert('⛔ خطا', 'خطا در دریافت توکن نوتیفیکیشن!');
     }
@@ -54,44 +52,4 @@ export async function registerForPushNotificationsAsync() {
   }
 
   return token;
-}
-
-export async function sendPushNotification({
-  pushTokens = [], 
-  title = "📢", 
-  body = "این یک نوتیفیکیشن تستی از Expo است!"
-} : {
-  pushTokens?: string[], 
-  title?: string, 
-  body?: string
-}) {
-  let tokens = pushTokens;
-
-  if (tokens.length) {
-    const message = {
-      to: tokens,
-      sound: "default",
-      title,
-      body,
-    };
-
-    try {
-      const response = await fetch("https://exp.host/--/api/v2/push/send", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Accept-Encoding": "gzip, deflate",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(message),
-      });
-
-      const data = await response.json();
-      Alert.alert("نتیجه ارسال", JSON.stringify(data, null, 2));
-    } catch (error: any) {
-      Alert.alert("خطا", error.message);
-    }
-  } else {
-    Alert.alert("خطا", "هیچ توکنی برای ارسال موجود نیست.");
-  }
 }

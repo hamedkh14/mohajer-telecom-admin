@@ -17,7 +17,7 @@ const SubscriptionItem = ({item, onSelecting}: {item: any, onSelecting: any}) =>
         <View style={styles.icon}>
           <CalendarDaysIcon color={Colors.caption} size={Sizes['xl']} />
         </View>
-        <View style={{height: '100%', justifyContent: 'space-between', alignItems: 'flex-end'}}>
+        <View style={{height: '100%', justifyContent: 'space-between'}}>
           <ThemedText type='text' style={{fontSize: Sizes.sm}}>{item.title}</ThemedText>
           <Price price={item.price} style={{color: Colors.caption}} />
         </View>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: Colors.elementBackground,
     paddingVertical: Spacing[1],
-    paddingRight: Spacing[1],
+    paddingLeft: Spacing[1],
     borderRadius: Rounded.lg,
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
   rightBox: {
     flexDirection: 'row',
     gap: Spacing[2],
-    height: '100%'
+    height: '100%',
+    flex: 1,
   },
   button: {
     height: 40,

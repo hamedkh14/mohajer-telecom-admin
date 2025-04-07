@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
   transactionItemTopContainer: {
     width: '100%',
     flexDirection: 'row',
+    gap: Spacing[1],
   },
   transactionItemTopContainerDetails: {
     flex: 1,

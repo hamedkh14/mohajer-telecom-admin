@@ -24,19 +24,26 @@ const operator: any = {
 
 const ServiceItem = ({item, price, openMenu}: {item: any, price?: number, openMenu: any}) => {
   return (
-    <View 
-      style={styles.itemContainer}
-    >
-      <View style={{flexDirection: 'row', gap: Spacing[1]}}>
-        <View style={styles.imageContainer}><Image source={operator[item?.operator || item?.type]} style={styles.itemImage} /></View>
-        <View style={{alignItems: 'flex-end', justifyContent: 'space-between'}}>
-          <ThemedText type='text' style={{fontSize: Sizes.sm}}>{toPersion(item.title)} {item.isSpecial && '(ویژه)'}</ThemedText>
-          <Price type='text' price={price || item.price} style={{color: Colors.caption}} />
+    <View style={styles.itemContainer}>
+      <View style={styles.rowContainer}>
+        <View style={styles.imageContainer}>
+          <Image source={operator[item?.operator || item?.type]} style={styles.itemImage} />
+        </View>
+        <View style={styles.textContainer}>
+          <ThemedText type='text' style={styles.itemTitle}>
+            {toPersion(item.title)} {item.isSpecial && '(ویژه)'}
+          </ThemedText>
+          <Price type='text' price={price || item.price} style={styles.itemPrice} />
         </View>
       </View>
-      <Button varient='iconButton' Icon={EllipsisVerticalIcon} iconOptions={{color: Colors.white}} onPress={() => {openMenu(item)}} />
+      <Button
+        varient='iconButton'
+        Icon={EllipsisVerticalIcon}
+        iconOptions={{ color: Colors.white }}
+        onPress={() => openMenu(item)}
+      />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -47,25 +54,40 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.elementBackground,
     padding: Spacing[1],
-    paddingLeft: 0,
+    paddingRight: 0,
     borderRadius: Rounded.md,
-    marginBottom: Spacing[2]
+    marginBottom: Spacing[2],
+  },
+  rowContainer: {
+    flexDirection: 'row',
+    gap: Spacing[1],
+    flex: 1,
   },
   imageContainer: {
     borderRadius: Rounded.md,
     width: 64,
     height: 64,
     backgroundColor: Colors.whiteAlpha2,
-    alignItems: 'center'
-    ,
-    justifyContent: 'center'
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   itemImage: {
     width: 40,
     height: 40,
     resizeMode: 'contain',
-    borderRadius: Rounded.md
-  }
-})
+    borderRadius: Rounded.md,
+  },
+  textContainer: {
+    justifyContent: 'space-between',
+    flex: 1,
+    flexShrink: 1,
+  },
+  itemTitle: {
+    fontSize: Sizes.sm,
+  },
+  itemPrice: {
+    color: Colors.caption,
+  },
+});
 
 export default ServiceItem

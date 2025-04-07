@@ -42,7 +42,7 @@ const SubscriptionItemMenu = ({open, onClose, item, confirmDelete}: modalProp) =
               varient='transparent' 
               text={'ویرایش'} 
               Icon={PencilSquareIcon} 
-              iconOptions={{position: 'end', color: Colors.white}} 
+              iconOptions={{color: Colors.white}} 
               style={styles.button} 
               onPress={() => {
                 onClose()
@@ -53,7 +53,7 @@ const SubscriptionItemMenu = ({open, onClose, item, confirmDelete}: modalProp) =
               varient='transparent' 
               text={'حذف'} 
               Icon={TrashIcon} 
-              iconOptions={{position: 'end', color: Colors.white}} 
+              iconOptions={{color: Colors.white}} 
               style={styles.buttonDelete} 
               onPress={() => {
                 onClose()

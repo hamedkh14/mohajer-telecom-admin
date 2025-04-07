@@ -10,7 +10,7 @@ interface ThemedTextProps {
 
 const ThemedText = ({children = '', type, style}: ThemedTextProps) => {
   return (
-    <Text style={[styles[type], style]}>{children}</Text>
+    <Text numberOfLines={1} ellipsizeMode='tail' style={[styles[type], style]}>{children}</Text>
   )
 }
 

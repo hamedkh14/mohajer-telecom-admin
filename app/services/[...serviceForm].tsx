@@ -158,7 +158,7 @@ const ServiceForm = () => {
 
     // Create package service
     createService(data)
-    .then((res) => {
+    .then(() => {
       Toast.show({
         type: 'success',
         text1: 'افزودن بسته جدید با موفقیت انجام شد!'
@@ -166,7 +166,7 @@ const ServiceForm = () => {
 
       resetForm()
     })
-    .catch((err) => {
+    .catch(() => {
       Toast.show({
         type: 'error',
         text1: 'خطایی سرور',
@@ -286,13 +286,13 @@ const styles = StyleSheet.create({
     zIndex: 10
   },
   dropDwonPlaceholder: {
-    textAlign: 'right',
+    // textAlign: 'right',
     fontSize: Sizes.base,
     fontFamily: 'Yekan-Medium',
     color: 'gray'
   },
   dropDownText: {
-    textAlign: 'right',
+    // textAlign: 'right',
     fontSize: 16,
     color: '#333333',
     fontFamily: 'Yekan-Medium',

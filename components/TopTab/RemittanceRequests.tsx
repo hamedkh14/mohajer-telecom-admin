@@ -10,7 +10,7 @@ import ThemedText from '../Themes/ThemedText'
 import ConfirmRequestServiceModal from '../ConfirmRequestServiceModal'
 import { useApproveRemittance, useInfiniteRemittances, useRejectRemittance } from '@/hooks/remittances'
 import RemittanceReportModal from '../RemittanceReportModal'
-import { sendPushNotification } from '@/utils/registerForPushNotificationsAsync'
+import { sendPushNotification } from '@/utils/sendPushNotification'
 
 const RemittanceRequests = () => {
   const [ remittanceReportModal, setRemittanceReportModal ] = useState<any>(null)

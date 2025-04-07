@@ -44,7 +44,7 @@ const UserItemMenu = ({open, onClose, item, confirmDelete, confirmChangeStatusUs
               varient='transparent' 
               text={'واریز / برداشت'} 
               Icon={CreditCardIcon} 
-              iconOptions={{position: 'end', color: Colors.white}} 
+              iconOptions={{color: Colors.white}} 
               style={styles.button} 
               onPress={() => {
                 onClose()
@@ -55,7 +55,7 @@ const UserItemMenu = ({open, onClose, item, confirmDelete, confirmChangeStatusUs
               varient='transparent' 
               text={'ویرایش'} 
               Icon={PencilSquareIcon} 
-              iconOptions={{position: 'end', color: Colors.white}} 
+              iconOptions={{color: Colors.white}} 
               style={styles.button} 
               onPress={() => {
                 onClose()
@@ -66,7 +66,7 @@ const UserItemMenu = ({open, onClose, item, confirmDelete, confirmChangeStatusUs
               varient='transparent' 
               text={item?.status ? 'غیرفعال کردن' : 'فعال کردن'} 
               Icon={ShieldExclamationIcon} 
-              iconOptions={{position: 'end', color: Colors.white}} 
+              iconOptions={{color: Colors.white}} 
               style={styles.button} 
               onPress={() => {
                 onClose()
@@ -77,7 +77,7 @@ const UserItemMenu = ({open, onClose, item, confirmDelete, confirmChangeStatusUs
               varient='transparent' 
               text={'گزارش تراکنش های کاربر'} 
               Icon={CurrencyDollarIcon} 
-              iconOptions={{position: 'end', color: Colors.white}} 
+              iconOptions={{color: Colors.white}} 
               style={styles.button} 
               onPress={() => {
                 onClose()
@@ -88,7 +88,7 @@ const UserItemMenu = ({open, onClose, item, confirmDelete, confirmChangeStatusUs
               varient='transparent' 
               text={'حذف'} 
               Icon={TrashIcon} 
-              iconOptions={{position: 'end', color: Colors.white}} 
+              iconOptions={{color: Colors.white}} 
               style={styles.buttonDelete} 
               onPress={() => {
                 onClose()

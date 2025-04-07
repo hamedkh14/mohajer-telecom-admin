@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
     gap: Spacing[2]
   },
   btnConfirm: {
-    backgroundColor: '#7f1d1d9e'
+    backgroundColor: '#7f1d1d9e',
+    flex: 1
   }
 })
 

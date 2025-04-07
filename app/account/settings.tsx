@@ -27,7 +27,7 @@ const Settings = () => {
   const { mutateAsync: updateSetting } = useUpdateSetting();
 
   const { isLoading, isError, data } = useGetSettings(
-    `?filter=(user_id='${authUser.user.id}')`
+    `?filter=(isAdmin=true)`
   );
 
   const onSubmit = () => {
@@ -148,6 +148,7 @@ const Settings = () => {
 
       setAfghaniToToman(`${data?.afghani_to_toman}`);
       setNumberCard(`${data?.numberCard > 0 ? data?.numberCard : ""}`);
+      setNumberCardName(`${data?.numberCardName}`);
       setRemittanceCities(`${formattedCities}`);
       setRemittancePrice(`${data?.remittance_price}`);
       setRemittancePriceText(`${data?.remittance_price_text}`);
