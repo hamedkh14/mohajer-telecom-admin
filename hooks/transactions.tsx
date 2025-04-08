@@ -38,7 +38,7 @@ export const useInfiniteTransactions = (userId: string = '') => {
     isFetchingNextPage,
     isFetchingPreviousPage
   } = useInfiniteQuery({
-    queryKey: [key],
+    queryKey: [key, userId],
     queryFn: async ({ pageParam = 1 }) => {
       const result = await request.get(`${endpoint}?filter=(user_id='${userId}')&expand=remittance_id.user_id,service_request_id.user_id,subscription_id&sort=-created&page=${pageParam}`)
       return result.data; 

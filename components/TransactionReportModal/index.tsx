@@ -73,10 +73,10 @@ const Details = ({data, userInfo}: {data: any, userInfo: any}) => {
           <ThemedText type='text'>{data?.expand?.remittance_id.recipient_city}</ThemedText>
         </View>
         {
-          data?.recipient_city === 'ایران' &&
+          data?.expand?.remittance_id.recipient_city === 'ایران' &&
           <View style={styles.item}>
             <ThemedText type='caption' style={{fontSize: 16}}>شماره کارت گیرنده:</ThemedText>
-            <ThemedText type='text'>{data?.recipient_cardnumber}</ThemedText>
+            <ThemedText type='text'>{data?.expand?.remittance_id?.recipient_cardnumber}</ThemedText>
           </View>
         }
       </>
@@ -121,6 +121,20 @@ const Details = ({data, userInfo}: {data: any, userInfo: any}) => {
 
 const TransactionReportModal = ({data, open, onClose}: modalProp) => {
   const [userInfo, setUserInfo] = useState<any>(null)
+
+  let servicePrice = data?.price;
+
+  if(data?.service_request_id && !data?.expand?.service_request_id?.service_id) {
+    servicePrice = data?.expand?.service_request_id?.information?.afghaniMoney;
+  }else if(data?.remittance_id) {
+    servicePrice = data?.expand?.remittance_id?.price;
+  }
+  let isToman = true
+
+  if( (data?.remittance_id && data?.expand?.remittance_id.recipient_city !== 'ایران') || (data?.service_request_id && !data?.expand?.service_request_id?.service_id) ) {
+    isToman = false
+  }
+
   const getUserInfo = async () => {
     if(data?.service_type === 'subCustomerWalletTopUp') {
       try {
@@ -175,7 +189,7 @@ const TransactionReportModal = ({data, open, onClose}: modalProp) => {
             </View>
             <View style={styles.item}>
               <ThemedText type='caption' style={{fontSize: 16}}>{data?.type === 'remittances' ? 'مبلغ' : 'قیمت:'}</ThemedText>
-              <Price type={data?.transaction_type} price={data?.price || 0} />
+              <Price type={data?.transaction_type} price={servicePrice} isToman={isToman} />
             </View>
             {
               data?.transaction_type === 'withdrawal' && (
