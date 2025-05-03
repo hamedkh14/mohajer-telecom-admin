@@ -15,6 +15,7 @@ import { I18nManager, Platform, Alert } from 'react-native';
 // import * as Updates from 'expo-updates';
 import NotificationHandler from '@/components/NotificationHandler';
 import toastConfig from '@/utils/toastConfig';
+import { AppConfigProvider } from '@/context/AppConfigContext';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -75,21 +76,23 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={DefaultTheme}>
         <QueryClientProvider client={queryClient}>
-          <AuthContext.Provider value={{ authUser, handleAuthUser }}>
-            <NotificationHandler>
-              <Stack>
-                <Stack.Screen name="index" options={{ headerShown: false }} />
-                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-                <Stack.Screen name="account" options={{ headerShown: false }} />
-                <Stack.Screen name="services" options={{ headerShown: false }} />
-                <Stack.Screen name="report" options={{ headerShown: false }} />
-                <Stack.Screen name="customer" options={{ headerShown: false }} />
-                <Stack.Screen name="subscription" options={{ headerShown: false }} />
-                <Stack.Screen name="priceAdjustment" options={{ headerShown: false }} />
-                <Stack.Screen name="+not-found" />
-              </Stack>
-            </NotificationHandler>
-          </AuthContext.Provider>
+          <AppConfigProvider>
+            <AuthContext.Provider value={{ authUser, handleAuthUser }}>
+              <NotificationHandler>
+                <Stack>
+                  <Stack.Screen name="index" options={{ headerShown: false }} />
+                  <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                  <Stack.Screen name="account" options={{ headerShown: false }} />
+                  <Stack.Screen name="services" options={{ headerShown: false }} />
+                  <Stack.Screen name="report" options={{ headerShown: false }} />
+                  <Stack.Screen name="customer" options={{ headerShown: false }} />
+                  <Stack.Screen name="subscription" options={{ headerShown: false }} />
+                  <Stack.Screen name="priceAdjustment" options={{ headerShown: false }} />
+                  <Stack.Screen name="+not-found" />
+                </Stack>
+              </NotificationHandler>
+            </AuthContext.Provider>
+          </AppConfigProvider>
           <Toast config={toastConfig} />
         </QueryClientProvider>
       </ThemeProvider>

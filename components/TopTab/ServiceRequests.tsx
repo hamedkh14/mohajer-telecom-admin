@@ -11,8 +11,11 @@ import ThemedText from '../Themes/ThemedText'
 import ServiceRequestReportModal from '../ServiceRequestReportModal'
 import ConfirmRequestServiceModal from '../ConfirmRequestServiceModal'
 import { sendPushNotification } from '@/utils/sendPushNotification'
+import { useAppConfig } from '@/context/AppConfigContext'
+import { sendPatternSMS } from '@/utils/sendPatternSMS'
 
 const ServiceRequests = () => {
+  const { smsSettings } = useAppConfig();
   const [ serviceRequestReportModal, setServiceRequestReportModal ] = useState<any>(null)
   const [confirmOpen, setConfirmOpen] = useState(null)
   const [rejectedDesc, setRejectedDesc] = useState('')
@@ -64,6 +67,15 @@ const ServiceRequests = () => {
           title: '🌟 درخواست شما تایید شد', 
           body: `درخواست ${serviceRequestReportModal?.title} شما تایید و انجام شد!`
         })
+        
+        if(smsSettings) {
+          sendPatternSMS({
+            patternCode: 'completed_request',
+            recipient: serviceRequestReportModal?.expand?.user_id?.phoneNumber,
+            variables: { text: 'سرویس' },
+            smsSettings
+          });
+        }
         Toast.show({
           type: 'success',
           text1: 'عملیات با موفقیت انجام شد!'
@@ -97,6 +109,15 @@ const ServiceRequests = () => {
           title: '💔 درخواست شما رد شد', 
           body: `درخواست ${serviceRequestReportModal?.title} شما رد شد!`
         })
+        
+        if(smsSettings) {
+          sendPatternSMS({
+            patternCode: 'rejected_request',
+            recipient: serviceRequestReportModal?.expand?.user_id?.phoneNumber,
+            variables: { text: 'سرویس' },
+            smsSettings
+          });
+        }
         Toast.show({
           type: 'success',
           text1: 'عملیات با موفقیت انجام شد!'

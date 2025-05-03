@@ -11,8 +11,11 @@ import ConfirmRequestServiceModal from '../ConfirmRequestServiceModal'
 import { useApproveRemittance, useInfiniteRemittances, useRejectRemittance } from '@/hooks/remittances'
 import RemittanceReportModal from '../RemittanceReportModal'
 import { sendPushNotification } from '@/utils/sendPushNotification'
+import { useAppConfig } from '@/context/AppConfigContext'
+import { sendPatternSMS } from '@/utils/sendPatternSMS'
 
 const RemittanceRequests = () => {
+  const { smsSettings } = useAppConfig();
   const [ remittanceReportModal, setRemittanceReportModal ] = useState<any>(null)
   const [confirmOpen, setConfirmOpen] = useState(null)
   const [rejectedDesc, setRejectedDesc] = useState('')
@@ -61,10 +64,20 @@ const RemittanceRequests = () => {
       })
       .then(() => {
         sendPushNotification({
-          pushTokens: [remittanceReportModal?.user_id?.pushToken], 
+          pushTokens: [remittanceReportModal?.expand?.user_id?.pushToken], 
           title: '🌟 حواله شما تایید شد!', 
           body: `حواله شما به مبلغ ${remittanceReportModal?.price} ${remittanceReportModal?.recipient_city === 'ایران' ? 'تومان' : 'افعانی'} تایید شد!`
         })
+        
+        if(smsSettings) {
+          sendPatternSMS({
+            patternCode: 'completed_request',
+            recipient: remittanceReportModal?.expand?.user_id?.phoneNumber,
+            variables: { text: 'حواله' },
+            smsSettings
+          });
+        }
+
         Toast.show({
           type: 'success',
           text1: 'عملیات با موفقیت انجام شد!'
@@ -93,10 +106,18 @@ const RemittanceRequests = () => {
       })
       .then(() => {
         sendPushNotification({
-          pushTokens: [remittanceReportModal?.user_id?.pushToken], 
+          pushTokens: [remittanceReportModal?.expand?.user_id?.pushToken], 
           title: '💔 حواله شما رد شد!', 
           body: `حواله شما به مبلغ ${remittanceReportModal?.price} ${remittanceReportModal?.recipient_city === 'ایران' ? 'تومان' : 'افعانی'} رد شد!`
         })
+        if(smsSettings) {
+          sendPatternSMS({
+            patternCode: 'rejected_request',
+            recipient: remittanceReportModal?.expand?.user_id?.phoneNumber,
+            variables: { text: 'حواله' },
+            smsSettings
+          });
+        }
         Toast.show({
           type: 'success',
           text1: 'عملیات با موفقیت انجام شد!'
