@@ -9,7 +9,7 @@ const initValues = async () => {
     token = await getToken('authToken');
 
     api = axios.create({
-        baseURL: "https://mohajertelecom.chbk.app/api",
+        baseURL: "https://mohajertelecom.chbk.dev/api",
         // baseURL: "http://192.168.1.130:8090/api",
         // baseURL: "http://10.0.2.2:8090/api",
         headers: {
